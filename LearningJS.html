@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS basics</title>
+	<script>
+		function add(){
+			document.getElementById("demo").innerHTML = "This was the sum"
+		}
+		function show(){
+			var name = "Vivek", age = 21, game = "Mobile Legends";
+			document.getElementById("about").innerHTML = name + "<br>" + age + "<br>" + game + "<br>"
+		}
+		function mul(a,b){
+			var v = a * b;
+			document.getElementById("mul").innerHTML = v;
+		}
+		function Klaus(person){
+			document.getElementById("klaus").innerHTML = person.name + " is a " + person.age + " years old " + person.breed;
+		}
+		function Arr(fruits){
+			txt = "<ul>"
+			for (var i = 0; i < fruits.length; i++) {
+			 txt += "<li>" + fruits[i] + "</li>";
+			}
+			document.getElementById("arr").innerHTML = txt;
+		}
+		function myfuncn(value){
+			nod = nod + value + " ";
+		}
+		function mapfuncn(value){
+			return value + 1;
+		}
+		function filterfuncn(value){
+			return value > 20;
+		}
+		function reducefuncn(total,value){
+			return total + value;
+		}
+		function everyfuncn(value){
+			return value > 20;
+		}
+		function somefuncn(value){
+			return value > 20;
+		}
+	</script>
+</head>
+<body>
+	<p>sum of 2+3 is</p>
+	<p id="demo"></p>
+	<p id="add"></p>
+	<button type="button" onclick="add()">click me</button><br>
+	<button type="button" onclick="show()">Show about me</button>
+	<p id="about"></p>
+	<button type="button" onclick="mul(x,y)">mul</button><br>
+	<p id="mul"></p>
+	<button type="button" onclick="Klaus(person)">Who is klaus?</button><br>
+	<p id="klaus"></p>
+	<p id="arr"></p>
+	<button type="button" onclick="Arr(fruits)">show elements of array</button><br>
+	<button type="button" onclick='document.getElementById("tareekh").innerHTML = new Date()'>Show date</button><br>
+	<p id="tareekh"></p>
+	<p id="str"></p>
+	<p id="position"></p>
+	<p id="last pos"></p>
+	<p id="str search"></p>
+	<p>slicing of string</p>
+	<p id="slice"></p>
+	<p id="replaced"></p>
+	<p id=""></p>
+	<p id="arr1">for each function</p>
+	<p id="arr2">map function</p>
+	<p id="arr3">filter function</p>
+	<p id="sum">reduce function</p>
+	<p id="arr4">every function</p>
+	<p id="arr5">some function</p>
+	<p id="date">show date</p>
+	<p id="day">week day</p>
+	<p id="month">set month</p>
+	<p id="forin">for in loop on object</p>
+	<p id="forof">for of loop on string</p>
+	<p id="class">car class</p>
+	<p id="json">parsing json</p>
+	<script>
+		document.getElementById("demo").innerHTML = 2 + 3;
+		document.write(2 + 3);
+		console.log(2 +3);
+		var x, y, z;
+		x = 5;
+		y = 3;
+		z = x + y;
+		document.getElementById("add").innerHTML = z;
+		var person = {name:"Klaus", breed:"Vampire", age:1000, accent:"British"};
+		var fruits = ["apple", "banana", "orange", "mango"];
+		var str = 'This is a string and we have to find the position of "string" in this.'
+		document.getElementById("str").innerHTML = str;
+		document.getElementById("position").innerHTML = str.indexOf('string') + " is the position of string. " + str.length + " is the length of string";
+		document.getElementById("last pos").innerHTML = str.lastIndexOf('string') + " is the last index of string word."
+		document.getElementById("str search").innerHTML = str.search("we have to") + " is the position of 'we have to'."
+		document.getElementById("slice").innerHTML = str.slice(5,10) + " 'using slice method' " + str.substring(5,10) + " 'using substring method' " + str.substr(5,5) + " 'using substr method'."
+		document.getElementById("replaced").innerHTML = str.replace("string", "replace string method");
+
+		var str1 = "converting UPPERCASE and lowercase"
+
+		var arr = [10, 35, 5, 13, 98];
+		var nod = "";
+		arr.forEach(myfuncn);
+		document.getElementById("arr1").innerHTML = nod;
+		var arr2 = arr.map(mapfuncn);
+		document.getElementById("arr2").innerHTML = arr2;
+		var arr3 = arr.filter(filterfuncn);
+		document.getElementById("arr3").innerHTML = arr3;
+		var sum = arr.reduce(reducefuncn);
+		document.getElementById("sum").innerHTML = sum;
+		var arr4 = arr.every(everyfuncn);
+		document.getElementById("arr4").innerHTML = arr4;
+		var arr5 = arr.some(somefuncn);
+		document.getElementById("arr5").innerHTML = arr5;
+		var d = new Date(464746566856);
+		document.getElementById("date").innerHTML = d;
+		document.getElementById("day").innerHTML = d.getDay();
+		d.setMonth(7);
+		document.getElementById("month").innerHTML = d;
+		var text = "";
+		for (var x in person){
+			text += person[x] + " ";
+		}
+		document.getElementById("forin").innerHTML = text;
+		var str2 = "javascript";
+		var text2 = "";
+		for (let x of str2){
+			text2 += x + " ";
+		}
+		document.getElementById("forof").innerHTML = text2;
+		class car{
+			constructor(name,year){
+				this.name = name;
+				this.year = year;
+			}
+			age(){
+				let dat = new Date();
+				return dat.getFullYear() - this.year;
+			}
+		}
+		var mycar = new car("Bentley", 2009);
+		document.getElementById("class").innerHTML = mycar.name + " " + mycar.year + "<br>" + mycar.age() + " is the age of my car";
+		var jsontxt = '{ "employees" : [' +
+			'{ "firstName":"John" , "lastName":"Doe" },' +
+			'{ "firstName":"Anna" , "lastName":"Smith" },' +
+			'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+		obj = JSON.parse(jsontxt);
+		document.getElementById("json").innerHTML = obj.employees[2].firstName + " " + obj.employees[2].lastName;
+	</script>
+</body>
+</html>
